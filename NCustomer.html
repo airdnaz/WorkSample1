@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <title>Property Form</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="MSThemeCompatible" content="no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- <link href="dist/css/bootstrap.min.css" type="text/css" rel ="stylesheet" media="screen" > -->
+    <link href="dist/css/light.css" type="text/css" rel ="stylesheet" media="screen" > 
+    <link href="v1/css/bootstrap.css" type="text/css" rel ="stylesheet" media="screen" >
+    <link href="v1/css/bootstrap-responsive.css" type="text/css" rel ="stylesheet">
+    <link rel="stylesheet" href="pcss/styles.css" />
+    
+</head>
+    <body onload ="repScript()">
+       <div class="container-fluid"  style = "margin-left:auto; margin-right:auto; margin-top:30px;">
+           <div class = "row-fluid">
+            <div class="panel ">
+              <div class="panel-heading">
+                <h3 class="panel-title"> Property Form</h3>
+              </div>
+              <div class="panel-body">
+                   <form class="form-inline" onsubmit= "return formVal(this)">
+                                <!--name area start-->
+                            <div id = "emessage" style="font-size:20px; font-weight:bold;"></div> 
+                                <div class = "control-group">
+                                    <label class ="line">First Name:</label>
+                                     <input class="span3"  type = "text"  name ="fname" id = "fname" maxlength= "45" onkeydown = "namfVal()" autocomplete = "off" />
+                                    <label class ="line" style ="margin-left:-35px;">Last Name:</label>
+                                     <input class="span3" type = "text" name ="lname" id = "lname" onkeyup = "namlVal()"  autocomplete = "off" />
+                                </div>
+                            <!--name area end-->
+                            <!--address  area start-->
+                            <span id = "amessage" style="font-size:20px; font-weight:bold;"></span>
+                                    <div class = "control-group">
+                                        <label class ="line">Address:</label>
+                                            <input class= "span3" type = "text" size = "" name= "address1" id = "address1" onkeyup = "streetVal()" autocomplete = "off"/>
+                                            <select class = "select2" id = "strloc" onfocus = "locstVal()" autocomplete = "off">
+                                                <option value = "0" >Select</option>
+                                                <option value = "avenue">Apartment</option>
+                                                <option value = "street">Suite</option>
+                                                <option value = "road">None</option>
+                                            </select>
+                                            <input class= "span1" type = "text" size = "" name= "address2" id = "address2" autocomplete = "off" 
+                                            onkeyup = "suiteVal()" />
+                                    </div>
+                                     <span id = "dmessage" style="font-size:20px; font-weight:bold;"></span>
+                                    <div class = "control-group">
+                                        <label  class ="line" >Zip:</label>
+                                            <input class="form-control" type = "text" name ="zip" id = "zip" maxlength = "5" onkeyup= "codeVal()" autocomplete = "off"/>
+                                         <label>City:</label>
+                                            <input class="span2" type = "text" name ="city" id = "city" autocomplete = "off">
+                                         <label>State:</label>
+                                            <input class="span1" type = "text" name ="state" id = "state" maxlength = "2" autocomplete = "off"/>
+                                    </div>
+
+                                    <div class = "control-group">
+                                         <label class ="line" style = "">Length of Time:</label>
+                                        <label>Years:</label>
+                                            <input class="span1" type = "text" name ="pmetime" id = "pmetime" maxlength= "2" onkeyup = "lengthVal()" autocomplete = "off" />
+                                        <label>Months:</label>
+                                            <input class="span1" type = "text" name ="pmemon" id = "pmemon" maxlength = "2" autocomplete = "off"/>
+
+                                    </div>
+                            <!--address  area end-->
+
+                            <!--if living the address is less than two year this are will show area start-->
+                             <span id = "a" style="font-size:20px; font-weight:bold;"></span>
+                            <div id = "previous" style = "display:none">
+                                    <div class = "control-group">
+                                        <label class ="line"> Previous  Address:</label>
+                                            <input class= "span3" type = "text" size = "" name= "address10" id = "address10" onchange= "hidPreVAl()" autocomplete = "off" />
+                                            <select class = "select2" id = "strloc20" onkeyup= "hidPreVAl()" autocomplete = "off" >
+                                                <option value = "0" >Select</option>
+                                                <option value = "avenue">Apartment</option>
+                                                <option value = "street">Suite</option>
+                                                <option value = "road">None</option>
+                                            </select>
+                                            <input class= "span1" type = "text" size = "" name= "address20" id = "address20" onchange= "hidPreVAl()" 
+                                            autocomplete = "off"/>
+                                    </div>
+                                    <div class = "control-group">
+                                        <label class ="line" >Zip:</label>
+                                            <input class="form-control" type = "text" name ="zip20" id = "zip20" maxlength = "5" onchange= "hidPreVAl()" 
+                                            autocomplete = "off" />
+                                         <label  class ="" >City:</label>
+                                            <input class="span2" type = "text" name ="city20" id = "city20"onchange= "hidPreVAl()" autocomplete = "off"  >
+                                         <label class ="" >State:</label>
+                                            <input class="span1" type = "text" name ="state20" id = "state20" maxlength = "2" placeholder ="TX" 
+                                            onchange = "hidPreVAl()" autocomplete = "off"/>
+                                    </div>
+                            </div>
+                        <!--if living the address is less than two year this are will show area end-->
+
+                            <!--Employment area start-->
+                            <span id = "d" style="font-size:20px; font-weight:bold;"></span>
+                                <div class = "control-group">
+                                    <label class ="line">Employer:</label>
+                                        <input class="span3" type = "text" size = "20" name ="employer" id = "employer" maxlength= "45" onkeyup = "employVal()"  autocomplete = "off" required />
+                                </div>
+                                <div id = "e" style="font-size:20px; font-weight:bold;"></div>
+                                <div class = "control-group">
+                                    <label class ="line">Employer Address:</label>
+                                      <input class= "span3" type = "text" size = "" name= "pmeaddress1" id = "pmeaddress1" onfocus = "employAdVal()" onchange = "employAdVal()" autocomplete = "off" required />
+                                            <select class = "select2" id = "pmestrloc" onfocus = "employAdVal()" onchange = "employAdVal()" autocomplete = "off">
+                                                <option value = "0" >Select</option>
+                                                <option value = "avenue">Apartment</option>
+                                                <option value = "street">Suite</option>
+                                                <option value = "road">None</option>
+                                            </select>
+                                            <input class= "span1" type = "text" size = "" name= "pmeaddress2" id = "pmeaddress2" onfocus = "employAdVal()" onchange = "employAdVal()" onfocus = "employAdVal()" autocomplete = "off" required />
+                                </div>
+                               <div class = "control-group">
+                                    <label class ="line" >Zip:</label>
+                                        <input class="form-control" type = "text" name ="pmezip" id = "pmezip" maxlength = "5" onfocus = "employAdVal()" onchange = "employAdVal()" autocomplete = "off" required/>
+                                         <label>City:</label>
+                                            <input class="span2" type = "text" size = "" name ="city" id = "pmecity" onfocus = "employAdVal()" onchange = "employAdVal()" autocomplete = "off" required>
+                                         <label>State:</label>
+                                            <input class="span1" type = "text" size = "" name ="pmestate" id = "pmestate" maxlength = "2" placeholder ="TX" 
+                                            onchange = "employAdVal()" onfocus = "employAdVal()" autocomplete = "off" required />
+                                </div>
+                                    <div id = "g" style="font-size:20px; font-weight:bold;"></div>
+                                    <div class = "control-group">
+                                        <label  class ="line">Position:</label>
+                                            <input class="span2" type = "text" size = "2" name ="pmeposition" id = "pmeposition"  placeholder = " Job Title,if military, rank" onchange = "ymentVal()" onfocus = "ymentVal()" autocomplete = "off" required/>
+                                        <label class ="line2">Work Phone:</label>
+                                            <input class="span2" type = "text"  name ="city" id = "pmephone" maxlength= "12" onchange = "workPhoVal()" 
+                                            onfocus = "workPhoVal()" autocomplete = "off"  onkeyup = "InputPhone(this)"/>
+                                        <label>Ext</label>
+                                            <input class="span1" type = "text" size = "20" name ="pmework" id = "pmework" maxlength= "" placeholder ="#1234" autocomplete = "off" />
+                                    </div>
+                                    <div id = "h" style="font-size:20px; font-weight:bold;"></div>
+                                    <div class = "control-group">
+                                        <label class ="line">Gross Monthly Income:</label>
+                                            <input class="span2" type = "text" size = "2" name ="pmegrom" id = "pmegrom" onchange = "grossinVal()" 
+                                            onfocus = "grossinVal()" autocomplete = "off" required/>
+                                        <label class ="line3" style = "margin-right:auto; margin-left:5.5px;">Length of Time:</label>
+                                            <label>Years:</label><!--refer to positionempo  hidden area if length is less than 2 -->
+                                                <input class="span1" type = "text" size = "2" name ="pmetime2" id = "timeempl" maxlength= "2" 
+                                                onchange = "previoEmployVal()" onfocus  = "previoEmployVal()" autocomplete = "off"required />
+                                            <label>Months:</label>
+                                                <input class="span1" type = "text" size = "2" name ="pmemon" id = "pmemon" maxlength = "2" autocomplete = "off"/>
+                                    </div>
+                                    <!--if length of time is less than 2 years this area need to show -->
+                                    <div id = "ghost" style="font-size:20px; font-weight:bold;"></div>
+                                    <div id="positionempo" style = "display:none">
+                                        <h4>Previous Employment</h4>  
+                                        <div class = "control-group">
+                                            <label class ="line">Employer Address:</label>
+                                              <input class= "span1" type = "text" name= "pmeaddress01" id = "pmeaddress01" onfocus = "epmhiddenVal()" onchange = "epmhiddenVal()" autocomplete = "off" required />
+                                                <input class= "span3" type = "text"  name= "pmeaddress001" id = "pmeaddress001" onfocus = "epmhiddenVal()" onchange = "epmhiddenVal()" autocomplete = "off" />
+                                                    <select class = "select2" id = "pmestrloc100" onfocus = "epmhiddenVal()" onchange = "epmhiddenVal()" 
+                                                    autocomplete = "off">
+                                                        <option value = "0" >Select</option>
+                                                        <option value = "avenue">Apartment</option>
+                                                        <option value = "street">Suite</option>
+                                                        <option value = "road">None</option>
+                                                    </select>
+                                                    <input class= "span1" type = "text" size = "" name= "pmeaddress02" id = "pmeaddress02" onfocus = "epmhiddenVal()" onchange = "epmhiddenVal()" autocomplete = "off" required />
+                                        </div>
+                                       <div class = "control-group">
+                                            <label class ="line" >Zip:</label>
+                                            <input class="form-control" type = "text" name ="pmezip01" id = "pmezip01" maxlength = "5" onfocus = "epmhiddenVal()" onchange = "epmhiddenVal()" autocomplete = "off"/>
+                                             <label  class ="" >City:</label>
+                                                <input class="span2" type = "text"  name ="pmecity01" id = "pmecity01" onfocus = "epmhiddenVal()" onchange = "epmhiddenVal()" autocomplete = "off" required>
+                                             <label class ="">State:</label>
+                                                <input class="span1" type = "text" name ="pmestate01" id = "pmestate01" maxlength = "2" placeholder ="TX" onchange = "epmhiddenVal()" onfocus = "epmhiddenVal()" autocomplete = "off"  />
+                                        </div>
+                                        <div id = "" style="font-size:20px; font-weight:bold;"></div>
+                                        <div class = "control-group">
+                                            <label  class ="line">Position:</label>
+                                                <input class="span2" type = "text" size = "2" name ="pmeposition" id = "pmeposition"  placeholder = " Job Title,if military, rank" onchange = "epmhiddenVal()" onfocus = "epmhiddenVal()" autocomplete = "off" />
+                                            <label class ="line2">Work Phone:</label>
+                                                <input class="span2" type = "text"  name ="city" id = "pmephone" maxlength= "12" onchange = "epmhiddenVal()" onfocus = "epmhiddenVal()" autocomplete = "off" onkeyup= " InputPhone(this)"/>
+                                            <label>Ext</label>
+                                                <input class="span1" type = "text" size = "20" name ="pmework" id = "pmework" maxlength= "" placeholder ="#1234" autocomplete = "off" />
+                                        </div>
+
+                                    </div>
+                                    <!--end hidden area for positionempo -->
+                                    <div id = "l" style="font-size:20px; font-weight:bold;"></div>
+                                     <div class = "control-group">
+                                         <label class ="line"> Checking Account:</label><!--refer ot "csacc" display selection if yes is check-->
+                                            <label class = "type"><input type= "radio" name = "cheyn" value ="ychecking"  id ="ychecking" onclick = "selectionVal()"
+                                                onfocus = "selectionVal()" autocomplete = "off"/>Yes</label>
+                                            <label class = "type"><input type= "radio" name = "cheyn" value ="nchecking"  id ="nchecking" onclick = "selectionVal()" onfocus = "selectionVal()" autocomplete = "off"/>No</label>
+                                        <label class ="line2"> Saving  Account:</label><!--refer ot "csacc" display selection if yes is check-->
+                                            <label class = "type"><input type= "radio" name = "ynsave" value ="ysaving"  id ="ysaving" onclick = "selectionVal2()"  onfocus = "selectionVal2()" autocomplete = "off"/>Yes</label>
+                                            <label class = "type"><input type= "radio" name = "ynsave" value ="nsaving"  id ="nsaving" onclick = "selectionVal2()" onfocus = "selectionVal2()" autocomplete = "off"/>No</label>
+                                    </div>
+                                
+                                <!-- option for checking and saving (if yes is checked)start-->
+                                <div id = "csacc" style ="display:none">
+                                    <label class = "line">Bank Name:</label>
+                                        <input class="span3" type = "text" size = "20" name ="baname" id = "baname" maxlength= "45" autocomplete = "off" />
+                                </div>
+                                <!-- option for checking and saving (if yes is checked)end--> 
+
+                        <!--employment area end-->
+            <hr>
+                            
+                                <span id = "p" style="font-size:17px; font-weight:bold;"></span>
+                                <div class = "control-group">
+                                    <label class ="line"> Home Type:</label><!--refer to laoption page display.js-->
+                                        <label class = "type"><input type= "checkbox" name = "site" value ="site"  id ="site" onclick = "hometyVal()" onfocus = "hometyVal()" autocomplete = "off"/>Vacation</label> 
+                                        <label class = "type"><input type= "checkbox" name = "condo" value ="condo"  id ="condo" onclick = "hometyVal()" 
+                                            onfocus = "hometyVal()" autocomplete = "off"/>Ranch</label>
+                                        <label class = "type"><input type= "checkbox" name = "townhouse" value ="townhouse"  id ="townhouse" onclick = "hometyVal()"    onfocus = "hometyVal()" autocomplete = "off"/>Lake House</label>
+                                        <label class = "type"><input type= "checkbox" name = "mobile" value ="manu"  id ="manu" onclick = "hometyVal()" 
+                                            onfocus = "hometyVal()" autocomplete = "off" />Rental</label>
+                                    
+                                </div>
+                                <div class = "control-group">
+                                    <label class = "line"> Which one applies:</label>
+                                        <label class = "type"><input type= "checkbox" name = "olist" value ="own"  id ="own" onlick = "ownerListVal()" onfocus = "ownerListVal()" autocomplete = "off"/>Purchase Home</label><!--refer to oboption page display.js-->
+                                        <label class = "type"><input type= "checkbox" name = "olist" value ="buying"  id ="buying" onclick = "ownerListVal()" onfocus = "ownerListVal()" autocomplete = "off"/>Lease Proptery</label>
+                                        <!--refer to oboption page display.js-->
+                                        <label class = "type"><input type= "checkbox" name = "olist" value ="rental"  id ="rental" onclick = "ownerListVal()" onfocus = "ownerListVal()" 
+                                            autocomplete = "off"/> Purchase Rental</label><!--refer to reoption page display.js -->
+
+                                </div>
+
+                                 <span id = "p" style="font-size:17px; font-weight:bold;"></span>      
+                    <!--rental option area (if rental is checked) start-->
+                            <div id="reoption" style = "display:none">
+                                <label class= "line">Min:</label>
+                                    <input class = "span2" type ="text" id="monthly" name= "monthly" onchange = "ownerListVal()" onfocus = "ownerListVal()" autocomplete = "off"/> 
+                                <label class= "line2">Max:</label>
+                                    <input class = "span2" type ="text" id="balancer" name= "balance" onchange = "ownerListVal()" onfocus = "ownerListVal()" autocomplete = "off"/> 
+                            </div>
+                    <!--rental option area (if rental is checked)end-->
+                    <!--own and buying option area (if own and buying is checked)start-->
+                            <div id="oboption" style = "display:none">
+                                <div class = "control-group">
+                                    <label class= "line"> Lease Min Price:</label>
+                                        <input class = "span2" type ="text" id="hvalue" name= "hvalue" onchange = "ownerListVal()" onfocus = "ownerListVal()" autocomplete = "off" /> 
+                                    <label class= "line2">Lease Max Price:</label>
+                                        <input class = "span2" type ="text" id="mvalue" name= "mvalue" onchange = "ownerListVal()" onfocus = "ownerListVal()" autocomplete = "off" /> 
+                                    <!-- <label class= "line3">Mortage Company:</label>
+                                        <input class = "span3" type ="text" id="balance" name= "balance" onchange = "ownerListVal()" onfocus = "ownerListVal()" autocomplete = "off" /> -->
+                                </div>
+                            </div>
+                    <!--own option area (if own is checked)end-->
+<!--if the length of time is less than 2 years for question "How long have you live there" for selection own land need give previous address-->
+                    <!--moblie option area (if moblie is checked)start-->
+                            <div id="laoption" style = "display:none">
+                                <label class= "line">Own Land:</label>
+                                    <label class = "type"><input type= "radio" name = "landyn" value ="landy"  id ="landy" autocomplete = "off" />Yes</label>
+                                    <label class = "type"><input type= "radio" name = "landyn" value ="landn"  id ="landn" autocomplete = "off" />No</label>
+                            </div>
+                    <!--moblie option area (if moblie is checked)end-->
+                    </form>
+                </div><!--end of panel-body-->
+                <div class="panel-footer">
+                 <a class="btn btn-info btn-lg" href="intro.html" role="button">Return To Intro</a>  By Zandria Robinson
+                </div>
+            </div><!--end of panel-->
+        </div><!--end of row -->
+        </div><!--end of container-->
+
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript" src="v1js/js/scripts.js"></script>
+        <script type="text/javascript" src="v1js/js/bootstrap.js"></script>
+        <script type="text/javascript" src="v1js/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="pjs/format.js"></script>
+        <script type="text/javascript" src="pjs/validation.js"></script>
+        
+    </body>
+
+</html>

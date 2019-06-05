@@ -1,0 +1,37 @@
+.jumbotron{
+    margin-top:-10px;
+    text-align: center;
+    color:white;
+    height: 100px;
+
+    
+    background: -webkit-linear-gradient(#83ACFF, #B2FFFF); /* For Safari */
+    background: -o-linear-gradient(#83ACFF, #B2FFFF);  /*For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#83ACFF, #B2FFFF);/* For Firefox 3.6 to 15 */
+    background: linear-gradient(#83ACFF, #B2FFFF); /* Standard syntax */
+}
+.jumbotron h1{
+    font-size: 50px;
+    margin-top:-20px;
+}
+/*jumboton to display under the nav end*/
+
+.buttonPress{
+    text-align: center;
+
+}
+
+.panel-heading,.panel-footer{
+    background: -webkit-linear-gradient(#83ACFF, #B2FFFF); /* For Safari */
+    background: -o-linear-gradient(#83ACFF, #B2FFFF);  /*For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#83ACFF, #B2FFFF);/* For Firefox 3.6 to 15 */
+    background: linear-gradient(#83ACFF, #B2FFFF); /* Standard syntax */
+}
+
+.panel-title{
+    text-align: center;
+    font-size: 35px;
+}
+
+/*css for ncustomer.html form*/
+
